@@ -1,24 +1,38 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アニマルブログ
 
-Things you may want to cover:
+## サイト概要
+犬をメインとしたペットとの日常を画像とともに投稿できるブログサイトです。
+投稿に対してのコメント・いいねをして、動物好きたちで盛り上がれます！
+コメント・いいねは通知されるため見逃すことなく、ペットに関する疑問や悩みなどの相談し会えます。
+フォロー機能を活用して、ファンを集めたり好きなユーザーの投稿をすぐに確認することもできます。
 
-* Ruby version
 
-* System dependencies
+### サイトテーマ
+ペットとの日常を共有しながら、相談しあえるブログサイトです。
 
-* Configuration
+### テーマを選んだ理由
+* コロナの影響でペットを飼い始める人が増えたため、ペットを飼い始める人がすでに飼っている人に直接質問できる環境を作りたかったため。<br>
+* ペットとの貴重な日常を、動物好きの間で共有しながら記録に残せるサイトを作りたかったため。
 
-* Database creation
+### ターゲットユーザ
+* 動物好きな方
+* ペットを飼おうか迷われている方。
+* これからペットを飼いたいが何から準備すれば良いかわからない方。
+* 日々の疲れを動物から癒されたい方。
 
-* Database initialization
+### 主な利用シーン
+* ペットの日常を発信したい。
+* ペットに関する悩みの相談・質問。
+* 動物を見て癒されたい時。
+## 設計書
 
-* How to run the test suite
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1jwrXmYe4TSybnJ_NaDBBOvJ9DqQhLoqJeEVhE602hp8/edit?usp=sharing>
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
