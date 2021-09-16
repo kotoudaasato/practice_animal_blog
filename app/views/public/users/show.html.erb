@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <h1>プロフィール</h1>
+    <div class="col">
+      <div class="name_field">
+        <h2>ニックネーム</h2>
+        <%= @user.name %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="profile_image">
+        <%= attachment_image_tag @user, :profile_image, fallback: 'no_image.png' %>
+      </div>
+    </div>
+  </div>
+</div>
