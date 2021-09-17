@@ -1,15 +1,23 @@
 <div class="container">
-  <div class="row">
+  <div class="title text-center">
     <h1>プロフィール</h1>
+  </div>
+  <div class="row">
     <div class="col">
       <div class="name_field">
-        <h2>ニックネーム</h2>
+        <h3>ニックネーム</h3>
+        <!--ユーザ詳細へ遷移できるようにする-->
         <%= @user.name %>
+      </div>
+      <div class="introduction_field">
+        <h3>自己紹介</h3>
+        <%= @user.introduction %>
       </div>
     </div>
     <div class="col">
       <div class="profile_image">
-        <%= attachment_image_tag @user, :profile_image, fallback: 'no_image.png' %>
+        <!--サイズ調整ができない-->
+        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: 'no_image.png', size:'300x300' %>
       </div>
     </div>
   </div>

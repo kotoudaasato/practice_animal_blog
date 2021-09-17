@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>投稿詳細</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="user_name text-center">
+        <%= @post.user.name %>
+      </div>
+      <%= attachment_image_tag @post, :image, fallback: 'no_image.png', size:'300x300' %>
+    </div>
+    <div class="col-md-8">
+      <h2 class="post_title text-center">
+        <%= @post.title %>
+      </h2>
+      <%= @post.body %>
+    </div>
+  </div>
+</div>
