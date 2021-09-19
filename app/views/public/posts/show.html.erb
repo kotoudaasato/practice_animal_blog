@@ -11,7 +11,10 @@
       <h2 class="post_title text-center">
         <%= @post.title %>
       </h2>
-      <%= @post.body %>
+      <div>
+        <%= @post.body %>
+      </div>
+      <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success"%>
     </div>
   </div>
 </div>

@@ -11,19 +11,6 @@
 
   <body>
     <header class="bg-light shadow-sm">
-      <!--<div class="container">-->
-        <!--<div class="row">-->
-        <!--  <div class="col-lg-3">-->
-        <!--    animal blog-->
-        <!--  </div>-->
-        <!--  <div class="col-lg-6"></div>-->
-        <!--  <div class="col-lg-3">-->
-        <!--    <li>新規登録</li>-->
-        <!--    <li> ログイン</li>-->
-        <!--  </div>-->
-        <!--</div>-->
-
-      <!--</div>-->
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
           <h1>animal_blog</h1>
@@ -32,9 +19,28 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">新規登録</li>
-              <li class="nav-item">ログイン</li>
-              <li class="nav-item">管理者ログイン</li>
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                </li>
+                <li class="nav-item">
+                  通知
+                </li>
+              <% elsif admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                </li>
+              <% else %>
+                  <li class="nav-item">
+                  <%= link_to "新規登録", new_user_registration_path %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_user_session_path %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "管理者ログイン", new_admin_session_path %>
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>
