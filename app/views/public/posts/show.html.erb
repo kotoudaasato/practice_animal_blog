@@ -17,4 +17,34 @@
       <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success"%>
     </div>
   </div>
+  <% @post.post_comments.each do |post_comment| %>
+    <div class="row comment_box">
+      <div class="col-4"></div>
+      <div class="col-8 comment_user_name ">
+        <div>
+          <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+        <h5><%= post_comment.user.name %>:</h5>
+        </div>
+        <div class="comment text-break">
+          <%= post_comment.comment %>
+          <% if post_comment.user == current_user %>
+            <%= link_to "削除する", post_post_comments_path(post_comment.post,post_comment), method: :delete, class: "btn btn-sm btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-8">
+      <%= form_with(model:[@post,@post_comment],local:true) do |f| %>
+        <div class="comment_form">
+          <%= f.text_area :comment, rows:'5', cols:'100', placeholder:"コメントを書く" %>
+        </div>
+        <div class="submit_bottun text-end">
+          <%= f.submit "送信する"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
