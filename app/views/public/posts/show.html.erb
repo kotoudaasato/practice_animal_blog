@@ -12,20 +12,10 @@
         <h2 class="post_title text-center">
           <%= @post.title %>
         </h2>
-          <% if @post.favorited_by?(current_user) %>
-            <p class="pt-3">
-              <%= link_to post_favorites_path(@post), method: :delete do %>
-                ❤<%= @post.favorites.count %>いいね
-              <% end %>
-            </p>
-          <% else %>
-            <p class="pt-3">
-              <%= link_to post_favorites_path(@post), method: :post do %>
-                ♡<%= @post.favorites.count %>いいね
-              <% end %>
-            </p>
-          <% end %>
+        <div class="favorites_buttons_show">
+          <%= render'public/favorites/favorite', post: @post %>
         </div>
+      </div>
       <div>
         <%= @post.body %>
       </div>
