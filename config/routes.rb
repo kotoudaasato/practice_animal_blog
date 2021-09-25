@@ -15,11 +15,13 @@ devise_for :admins, controllers: {
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
+    get "search_tag"=>"posts#search_tag"
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
     resources :notifications, only: [:index]
+
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

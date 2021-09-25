@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row border-bottom border-danger pt-3">
+  <div class="row border-bottom border-5 pt-3">
     <div class="col-8 ">
       <div class="subtitle d-flex">
         <h2 class="post_title text-center mb-0">
@@ -16,6 +16,12 @@
       </div>
       <div class="user_name text-start mt-0">
         <%= @post.user.name %>
+      </div>
+      <div>
+
+        <% @post_tags.each do |tag| %>
+          <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
+        <% end %>
       </div>
       <div>
         <%= @post.body %>

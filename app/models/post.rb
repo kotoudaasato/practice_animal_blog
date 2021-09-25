@@ -11,10 +11,15 @@ class Post < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
 
+  has_many :post_tags,dependent: :destroy
+  has_many :tags,through: :post_tags
+
+  #いいね
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
 
+  #通知
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
       post_id: id,
@@ -42,6 +47,23 @@ class Post < ApplicationRecord
       notification.checked == true
     end
     notification.save
+  end
+
+  #タグ
+  def save_tag(sent_tags)
+    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+    old_tags = current_tags - sent_tags
+    new_tags = sent_tags - current_tags
+
+     old_tags.each do |old|
+      tag_id = Tag.find_by(name: old).id
+      self.post_tags.find_by(tag_id: tag_id).destroy
+    end
+
+    new_tags.each do |new|
+      new_post_tag = Tag.find_or_create_by(name: new)
+      self.tags << new_post_tag
+   end
   end
 
 

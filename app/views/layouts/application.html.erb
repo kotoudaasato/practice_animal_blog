@@ -28,30 +28,30 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item pr-3">
-                  <%= link_to "新規投稿", new_post_path %>
+                  <%= link_to "新規投稿", new_post_path, class:'text-reset' %>
                 </li>
                 <li class="nav-item pr-3">
-                  <%= link_to "投稿一覧", posts_path %>
+                  <%= link_to "投稿一覧", posts_path, class:'text-reset' %>
                 </li>
                 <li class="nav-item pr-3">
-                  <%= link_to "通知", notifications_path %>
+                  <%= link_to "通知", notifications_path, class:'text-reset' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:'text-reset' %>
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:'text-reset' %>
                 </li>
               <% else %>
                   <li class="nav-item">
-                  <%= link_to "新規登録", new_user_registration_path %>
+                  <%= link_to "新規登録", new_user_registration_path, class:'text-reset' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログイン", new_user_session_path %>
+                  <%= link_to "ログイン", new_user_session_path, class:'text-reset' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "管理者ログイン", new_admin_session_path %>
+                  <%= link_to "管理者ログイン", new_admin_session_path, class:'text-reset' %>
                 </li>
               <% end %>
             </ul>
