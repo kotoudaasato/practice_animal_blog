@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="title text-center">
+    <h1>
+      編集画面
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= form_with model:@user, local:true do |f| %>
+      <table class="table">
+        <tr>
+          <td>
+            <h4>プロフィール画像</h4>
+          </td>
+          <td>
+            <div class="profile_iamge_edit_form">
+              <%= f.attachment_field :profile_image %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>ニックネーム</h4>
+          </td>
+          <td>
+            <div class="name_edit_form">
+              <%= f.text_area :name, cols:'50' %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>自己紹介</h4>
+          </td>
+          <td>
+            <div class="introduction_edit_form">
+              <%= f.text_area :introduction, rows:'5', cols:'50' %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="update_btn text-end">
+              <%= f.submit "更新する", class: 'btn btn-success' %>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

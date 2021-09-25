@@ -12,19 +12,29 @@
   <body>
     <header class="bg-light shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-dark">
+        <% if user_signed_in? %>
+          <div class="profile_image text-start">
+            <%= link_to user_path(current_user) do %>
+              <%= attachment_image_tag current_user, :profile_image, :fill,100,100, fallback: 'no_image.png', size:'50x50', class:'rounded-circle' %>
+            <% end %>
+          </div>
+        <% end %>
         <div class="container">
-          <h1>animal_blog</h1>
+          <h1 class="main_title">ani<span class="text-danger">mal</span>_blog</h1>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-expanded="false" aria-controls="navbarNabDropdown" aria-labrl="Toggle nabigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <li class="nav-item pr-3">
+                  <%= link_to "投稿一覧", posts_path %>
+                </li>
+                <li class="nav-item pr-3">
+                  <%= link_to "通知", notifications_path %>
                 </li>
                 <li class="nav-item">
-                  通知
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item">

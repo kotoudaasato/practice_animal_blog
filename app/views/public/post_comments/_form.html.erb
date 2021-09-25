@@ -1,8 +1,8 @@
 <%= form_with(model:[post, post_comment]) do |f| %>
-  <div class="comment_form">
+  <div class="comment_form pt-1">
     <%= f.text_area :comment, rows:'5', cols:'100', placeholder:"コメントを書く" %>
   </div>
-  <div class="submit_bottun text-end">
+  <div class="submit_bottun">
     <%= f.submit "送信する"%>
   </div>
 <% end %>

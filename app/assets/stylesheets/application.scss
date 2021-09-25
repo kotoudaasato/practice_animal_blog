@@ -17,3 +17,12 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+
+.user_name,.introduction{
+  width:250px;
+}
+.main_title{
+  font-family: 'Anton', sans-serif;
+}

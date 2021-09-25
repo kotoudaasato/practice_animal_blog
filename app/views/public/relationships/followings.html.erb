@@ -1,26 +1,26 @@
 <div class="container">
-    <table>
-      <h2>フォローユーザ一覧</h2>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <h2 class="subtitle text-center">フォローユーザ一覧</h2>
         <% if @users.exists? %>
-        <thead>
-          <tr>
-            <th>ユーザ名</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td><%= user.name %></td>
+              <td>ユーザー名:
+              <%= link_to user_path(user) do %>
+                <%= user.name %>
+              <% end %>
+              </td>
               <td>フォロー数：<%= user.followings.count %></td>
               <td>フォロワー数：<%= user.followers.count %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-      <% else %>
-      <p>ユーザがいません</p>
-      <% end %>
+        <% else %>
+          <p class="text-center">ユーザーがいません</p>
+        <% end %>
+    </div>
+  </div>
 </div>
-

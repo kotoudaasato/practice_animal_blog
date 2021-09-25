@@ -1,29 +1,58 @@
 <div class="container">
   <div class="title text-center">
+    <nav class="navbar navbar-expand">
     <h1>プロフィール</h1>
+      <% if @user == current_user %>
+        <div class="edit_btn pl-4">
+          <%= link_to "編集する", edit_user_path(@user) ,class:'btn btn-success'%>
+        </div>
+      <% else %>
+        <div class="follow_btn">
+          <%= render 'public/relationships/follow_button', user: @user %>
+        </div>
+      <% end %>
+  </nav>
   </div>
   <div class="row">
-    <div class="col">
-      <div class="name_field">
-        <h3>ニックネーム</h3>
-        <!--ユーザ詳細へ遷移できるようにする-->
-        <%= @user.name %>
-      </div>
-      <div class="introduction_field">
-        <h3>自己紹介</h3>
-        <%= @user.introduction %>
-      </div>
+    <div class="col-6">
+      <table class="table">
+        <tr>
+            <td class="followed_count pt-2">
+              <%= link_to user_followings_path(@user) do %>
+                フォロー数：<%= @user.followings.count %>
+              <% end %>
+            </td>
+            <td class="follower_count pt-2">
+              <%= link_to user_followers_path(@user) do %>
+                フォロワー数：<%= @user.followers.count %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+          <td class="user_name">
+            <h3>ニックネーム</h3>
+          </td>
+          <td>
+            <!--ユーザ詳細へ遷移できるようにする-->
+            <%= @user.name %>
+          </td>
+        </tr>
+        <tr>
+          <td class="introduction">
+            <h3>自己紹介</h3>
+          </td>
+          <td>
+            <%= @user.introduction %>
+          </td>
+        </tr>
+      </table>
     </div>
-    <div class="col">
+    <div class="col-1"></div>
+    <div class="col-5">
       <div class="profile_image">
         <!--サイズ調整ができない-->
-        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: 'no_image.png', size:'300x300' %>
+        <%= attachment_image_tag @user, :profile_image,fallback: 'no_image.png', size:'300x300', class: 'rounded-circle border-dark' %>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="follow_btn">
-      <%= render'public/relationships/follow_button', user: @user %>
     </div>
   </div>
 </div>
