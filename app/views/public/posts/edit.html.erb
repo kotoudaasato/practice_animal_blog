@@ -1,25 +1,49 @@
 <div class="container">
   <h1>投稿編集</h1>
   <div class="row">
-
-    <div class="col-md-4">
+    <div class="col">
       <%= form_with model:@post, local:true do |f| %>
-      <%= attachment_image_tag @post, :image, fallback: 'no_image.png', size:'300x300' %>
-      <div class="image_update_form">
-        <%= f.attachment_field :image %>
-      </div>
+      <table class="table">
+        <tr>
+          <td>
+            <h4>画像</h4>
+          </td>
+          <td>
+            <div class="image_update_form">
+              <%= f.attachment_field :image %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>タイトル</h4>
+          </td>
+          <td>
+            <%= f.text_field :title, cols:'50' %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>本文</h4>
+          </td>
+          <td>
+            <%= f.text_area :body, rows:'5', cols:'50' %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="update_btn">
+              <%= f.submit "更新する", class:"btn btn-success" %>
+            </div>
+            </td>
+            <td>
+            <div class="delete_btn">
+              <%= link_to "削除する", post_path(@post), method: :delete ,class: "btn btn-danger" %>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <% end %>
     </div>
-    <div class="col-md-8">
-      <div class="title_update_form">
-        <%= f.label :title, "タイトル"%>
-        <%= f.text_field :title %>
-      </div>
-      <div class="body_update_form">
-        <%= f.text_area :body %>
-      </div>
-      <%= f.submit "更新する", class:"btn btn-success" %>
-      <%= link_to "削除する", post_path(@post), method: :delete ,class: "btn btn-danger" %>
-    </div>
-    <% end %>
   </div>
 </div>

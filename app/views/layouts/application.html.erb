@@ -28,6 +28,9 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item pr-3">
+                  <%= link_to "新規投稿", new_post_path %>
+                </li>
+                <li class="nav-item pr-3">
                   <%= link_to "投稿一覧", posts_path %>
                 </li>
                 <li class="nav-item pr-3">
@@ -56,6 +59,9 @@
         </div>
       </nav>
     </header>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
