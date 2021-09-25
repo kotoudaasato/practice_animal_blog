@@ -20,15 +20,15 @@
             <h4>タイトル</h4>
           </td>
           <td>
-            <%= f.text_field :title, cols:'50' %>
+            <%= f.text_field :title %>
           </td>
         </tr>
         <tr>
           <td>
-            <h4>タグ</h4>
+            <h4>タグ</h4><p>(例：チワワ,トイレ,お散歩)</p>
           </td>
           <td>
-            <%= f.text_field :name %>
+            <%= f.text_area :name,rows:'1', cols:'80' %>
           </td>
         </tr>
         <tr>
@@ -36,7 +36,7 @@
             <h4>本文</h4>
           </td>
           <td>
-            <%= f.text_area :body, rows:'5', cols:'50' %>
+            <%= f.text_area :body, rows:'8', cols:'80' %>
           </td>
         </tr>
         <tr>

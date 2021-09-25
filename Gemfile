@@ -77,3 +77,5 @@ gem 'font-awesome-sass', '~> 5.13'
 
 gem 'rails-i18n'
 
+gem 'kaminari','~> 1.2.1'
+gem 'kaminari-bootstrap', '~> 3.0.1'

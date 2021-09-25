@@ -1,44 +1,30 @@
+<div class="container">
 <div class="texts-wrapper">
-  <div class="contents-title text-center">
-    <h1>投稿一覧</h1>
+  <div class="row subtitle_box">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <h1 class="subtitle text-center">投稿一覧</h1>
   </div>
-  <div>
-    <% @tag_list.each do |list|%>
-    <i class="fas fa-tag">
-      <%=link_to list.name,search_tag_path(tag_id: list.id) %>
-      <%="(#{list.posts.count})" %>
-      </i>
-    <% end %>
-  </div>
-  <div class="row justify-content-start">
-    <% @posts.each do |post| %>
-    <div class="col-3">
-      <div class="card-deck p-3">
-        <div class="card content-card border-dark">
-          <div class="card-header p-0">
-          <div class="card-img-top">
-            <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag post, :image, fallback:'no_image.png' ,size:"304x255" %>
-            <% end %>
-          </div>
-          </div>
-          <div class="card-body">
-            <div class="title_box">
-              <h5 class="card-title">
-                <%= link_to post_path(post.id), class:'text-reset' do %>
-                  <%= post.title %>
-                <% end %>
-              </h5>
-            </div>
-            <p>
-              <%=link_to user_path(post.user), class:'btn btn-secondary' do %>
-                <%= post.user.name %>
-              <% end %>
-            </p>
-          </div>
-        </div>
+  <div class="col-3 search-form pt-3">
+      <%= form_tag(search_path, method: :get) do %>
+        <%= text_field_tag 'content' %></br>
+        <%= select_tag 'model', options_for_select({ "User" => "user", "Post" => "post" }) %>
+        <%= select_tag 'method', options_for_select({ "完全一致" => "perfect", "部分一致" => "partial", "前方一致" => "forward_match", "後方一致" => "backward_match" }) %>
+        <%= submit_tag '検索' %>
+      <% end %>
+      <div>
+        <%= link_to "人気投稿を見る", search_favorite_path, class:'btn btn-primary' %>
       </div>
-    </div>
-    <% end %>
   </div>
+  </div>
+  <%= render 'index', posts: @posts%>
+  <div class="row">
+    <div class="col-5">
+    </div>
+    <div class="col-2">
+       <%= paginate @posts %>
+    </div>
+    <div class="col-5"></div>
+  </div>
+</div>
 </div>

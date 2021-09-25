@@ -17,7 +17,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(12).reverse_order
     @tag_list=Tag.all
   end
 
@@ -50,9 +50,20 @@ class Public::PostsController < ApplicationController
   end
 
   def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts.page(params[:page]).per(12)
+  end
+
+  def search
+    @posts = Post.search(params[:keyword])
+    @keyword = params[:keyword]
     @tag_list=Tag.all
-    @tag=Tag.find(params[:tag_id])
-    @posts=@tag.posts
+    render "index"
+  end
+
+  def search_favorite
+    @posts = Post.last_week
   end
 
   private

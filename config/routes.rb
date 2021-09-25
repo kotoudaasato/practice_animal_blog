@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
+
+  get '/search', to: 'searches#search'
   scope module: :public do
     root to: 'homes#top'
     devise_for :users, controllers: {
@@ -15,7 +17,9 @@ devise_for :admins, controllers: {
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
+    get 'search_favorite' => 'posts#search_favorite'
     get "search_tag"=>"posts#search_tag"
+    get 'search' => 'posts#search'
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]

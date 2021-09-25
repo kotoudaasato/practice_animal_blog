@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
 
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 
   has_many :notifications, dependent: :destroy
 
@@ -64,6 +65,15 @@ class Post < ApplicationRecord
       new_post_tag = Tag.find_or_create_by(name: new)
       self.tags << new_post_tag
    end
+  end
+
+  #検索
+  def self.search(keyword)
+    where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
+  def self.last_week
+    Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) desc').limit(12).pluck(:post_id))
   end
 
 
