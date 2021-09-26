@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
+  namespace :admin do
+    resources :users
+    resources :posts do
+      resources :post_comments, only: [:destroy]
+    end
+  end
 
   get '/search', to: 'searches#search'
   scope module: :public do

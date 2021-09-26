@@ -1,7 +1,5 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  def index
-  end
 
   def show
       @user = User.find(params[:id])
@@ -19,6 +17,12 @@ class Public::UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path
   end
 
   private

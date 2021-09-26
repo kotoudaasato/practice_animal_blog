@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="title text-center">
+    <nav class="navbar navbar-expand">
+      <h1>プロフィール</h1>
+      <%= link_to "削除する", admin_user_path(@user), method: :delete, class: 'btn btn-danger', data: {confirm: "[確認]アカウントを削除しますか？"} %>
+    </nav>
+  </div>
+  <div class="row border-bottom">
+    <div class="col-8">
+      <table class="table">
+          <tr>
+          <td class="user_name">
+            <h3>ニックネーム</h3>
+          </td>
+          <td>
+            <%= @user.name %>
+          </td>
+        </tr>
+        <tr>
+          <td class="introduction">
+            <h3>自己紹介</h3>
+          </td>
+          <td>
+            <%= @user.introduction %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-4">
+      <div class="profile_image">
+        <!--サイズ調整ができない-->
+        <%= attachment_image_tag @user, :profile_image,fallback: 'no_image.png', size:'300x300', class: 'rounded-circle border-dark' %>
+      </div>
+    </div>
+  </div>
+  <%= render 'admin/posts/index', posts: @posts %>
+</div>

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row border-bottom border-5 pt-3">
+    <div class="col-9 ">
+      <div class="subtitle d-flex">
+        <h2 class="post_title text-center mb-0">
+          <%= @post.title %>
+        </h2>
+        <%= link_to "削除する", admin_post_path(@post), method: :delete, class: 'btn btn-danger', data: {confirm: "[確認]投稿を削除しますか？"} %>
+      </div>
+      <div class="user_name text-start mt-0">
+        <%= @post.user.name %>
+      </div>
+      <div>
+
+        <% @post_tags.each do |tag| %>
+          <i class="fas fa-tag">
+            <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
+          </i>
+        <% end %>
+      </div>
+      <div>
+        <%= @post.body %>
+      </div>
+    </div>
+  <div class="col-3">
+      <div class="profile_image p-0">
+        <%= attachment_image_tag @post, :image, fallback: 'no_image.png', size:'300x300' %>
+      </div>
+    </div>
+    </div>
+  <div class="row">
+    <div class="col-8">
+      <div class="comments">
+        <%= render 'admin/post_comments/index', post: @post %>
+      </div>
+    </div>
+    <div class="col-4">
+    </div>
+  </div>
+</div>

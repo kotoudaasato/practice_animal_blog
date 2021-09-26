@@ -40,6 +40,12 @@
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:'text-reset' %>
                 </li>
               <% elsif admin_signed_in? %>
+                <li class="nav-item pr-3">
+                  <%= link_to "投稿一覧", admin_posts_path, class:'text-reset' %>
+                </li>
+                <li class="nav-item pr-3">
+                  <%= link_to "ユーザー一覧", admin_users_path, class:'text-reset' %>
+                </li>
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:'text-reset' %>
                 </li>

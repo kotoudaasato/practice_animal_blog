@@ -1,0 +1,22 @@
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="row">
+      <div class="col">
+        <div class="border-bottom border-3 pt-3 pb-3">
+          <%= link_to admin_user_path(user) do %>
+            <%= attachment_image_tag user, :profile_image, :fill,100,100, fallback: "no_image.png", size: "50x50", class: "rounded-circle" %>
+          <% end %>
+          <%= link_to user.name, admin_user_path(user) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-5">
+    </div>
+    <div class="col-2">
+       <%= paginate @users %>
+    </div>
+    <div class="col-5"></div>
+  </div>
+</div>

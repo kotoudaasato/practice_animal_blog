@@ -10,7 +10,7 @@
   <div class="comment text-break border-bottom border-dark">
     <%= post_comment.comment %>
     <% if post_comment.user == current_user %>
-      <%= link_to "削除する", post_post_comment_path(post_comment.post,post_comment), method: :delete,class:'btn btn-sm btn-danger', remote: true %>
+      <%= link_to "削除する", post_post_comment_path(post_comment.post,post_comment), method: :delete,class:'btn btn-sm btn-danger', data: { confirm: "【確認】コメントを削除しますか？" }, remote: true %>
     <% end %>
   </div>
 <% end %>
