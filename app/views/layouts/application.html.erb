@@ -15,7 +15,7 @@
         <% if user_signed_in? %>
           <div class="profile_image text-start">
             <% if unchecked_notifications.any? %>
-              <i class="fa fa-circle" style="color: gold;"></i>
+              <i class="fa fa-circle" style="color: red;"></i>
             <% end %>
             <%= link_to user_path(current_user) do %>
               <%= attachment_image_tag current_user, :profile_image, :fill,100,100, fallback: 'no_image.png', size:'50x50', class:'rounded-circle' %>
