@@ -5,6 +5,8 @@ devise_for :admins, controllers: {
   }
   namespace :admin do
     resources :users
+    get 'search_tag'=>'posts#search_tag'
+    get 'search_favorite' => 'posts#search_favorite'
     resources :posts do
       resources :post_comments, only: [:destroy]
     end
