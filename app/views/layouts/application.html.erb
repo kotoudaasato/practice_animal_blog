@@ -10,17 +10,20 @@
   </head>
 
   <body>
-    <header class="bg-light shadow-sm">
+    <header class="bg-warning shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <% if user_signed_in? %>
           <div class="profile_image text-start">
+            <% if unchecked_notifications.any? %>
+              <i class="fa fa-circle" style="color: gold;"></i>
+            <% end %>
             <%= link_to user_path(current_user) do %>
               <%= attachment_image_tag current_user, :profile_image, :fill,100,100, fallback: 'no_image.png', size:'50x50', class:'rounded-circle' %>
             <% end %>
           </div>
         <% end %>
         <div class="container">
-          <h1 class="main_title">ani<span class="text-danger">mal</span>_blog</h1>
+          <h1 class="main_title">animal_blog</h1>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-expanded="false" aria-controls="navbarNabDropdown" aria-labrl="Toggle nabigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -28,36 +31,49 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item pr-3">
-                  <%= link_to "新規投稿", new_post_path, class:'text-reset' %>
+                  <%= link_to new_post_path, class:'text-reset' do %>
+                    <i class="fas fa-paper-plane">新規投稿</i>
+                  <% end %>
                 </li>
                 <li class="nav-item pr-3">
-                  <%= link_to "投稿一覧", posts_path, class:'text-reset' %>
-                </li>
-                <li class="nav-item pr-3">
-                  <%= link_to "通知", notifications_path, class:'text-reset' %>
+                  <%= link_to posts_path, class:'text-reset' do %>
+                    <i class="fas fa-home">ホーム</i>
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:'text-reset' %>
+                  <%= link_to destroy_user_session_path, method: :delete, class:'text-reset' do %>
+                    <i class="fas fa-sign-in-alt">ログアウト</i>
+                  <% end %>
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item pr-3">
-                  <%= link_to "投稿一覧", admin_posts_path, class:'text-reset' %>
+                  <%= link_to admin_posts_path, class:'text-reset' do %>
+                    <i class="fas fa-home">ホーム</i>
+                  <% end %>
                 </li>
                 <li class="nav-item pr-3">
-                  <%= link_to "ユーザー一覧", admin_users_path, class:'text-reset' %>
+                  <%= link_to admin_users_path, class:'text-reset' do %>
+                    <i class="fas fa-user-circle">ユーザー</i>
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:'text-reset' %>
+                  <%= link_to destroy_admin_session_path, method: :delete, class:'text-reset' do %>
+                    <i class="fas fa-sign-in-alt">ログアウト</i>
+                  <% end %>
                 </li>
               <% else %>
-                  <li class="nav-item">
-                  <%= link_to "新規登録", new_user_registration_path, class:'text-reset' %>
+                  <li class="nav-item pr-3">
+                  <%= link_to  new_user_registration_path, class:'text-reset' do %>
+                    <i class="fas fa-user-plus">新規登録</i>
+                  <% end %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "ログイン", new_user_session_path, class:'text-reset' %>
+                <li class="nav-item pr-3">
+                  <%= link_to new_user_session_path, class:'text-reset' do %>
+                    <i class="fas fa-sign-in-alt">サインイン</i>
+                  <% end %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "管理者ログイン", new_admin_session_path, class:'text-reset' %>
+                <li class="nav-item text-right">
+                  <%= link_to "管理者", new_admin_session_path, class:'text-reset' %>
                 </li>
               <% end %>
             </ul>

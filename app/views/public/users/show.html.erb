@@ -1,12 +1,21 @@
 <div class="container">
   <div class="title text-center">
     <nav class="navbar navbar-expand">
-    <h1>プロフィール</h1>
       <% if @user == current_user %>
-        <div class="edit_btn pl-4">
-          <%= link_to "編集する", edit_user_path(@user) ,class:'btn btn-success'%>
+        <div class="edit_btn pb-2">
+          <%= link_to edit_user_path(@user) do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+        </div>
+        <h1>プロフィール</h1>
+        <div class="notification pl-4">
+            <% if unchecked_notifications.any? %>
+              <i class="fa fa-circle" style="color: gold;"></i>
+            <% end %>
+            <%= link_to "通知を見る", notifications_path, class:'btn btn-light' %>
         </div>
       <% else %>
+      <h1>プロフィール</h1>
         <div class="follow_btn">
           <%= render 'public/relationships/follow_button', user: @user %>
         </div>

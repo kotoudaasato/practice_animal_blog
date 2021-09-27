@@ -1,14 +1,18 @@
 <div class="container">
-  <h1>通知一覧</h1>
-  <div class="row">
-    <div class="col">
-      <% if @notifications.exists? %>
+  <h1 class="sub_title text-center">通知一覧</h1>
+  <% if @notifications.exists? %>
+    <%= link_to notification_destroy_all_path, method: :delete, data: {confirm: "[確認]通知を全て削除しますか？"} do %>
+      <i class="fas fa-trash" style="color: black;"></i>
+      <h7 style="color: black;">全削除</h7>
+    <% end %>
+    <div class="row">
+      <div class="col">
         <div class="user_index">
           <%= render @notifications %>
         </div>
-      <% else %>
-        <p>通知はありません</p>
-      <% end %>
+  <% else %>
+    <p class="text-center">通知はありません</p>
+  <% end %>
     </div>
   </div>
 </div>

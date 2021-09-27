@@ -1,11 +1,10 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
-<% if user_signed_in? %>
-  <%= link_to "ログアウト", destroy_user_session_path , method: :delete %>
-<% elsif admin_signed_in? %>
-  <%= link_to"ログアウト２", destroy_admin_session_path, method: :delete %>
-<% else %>
-  <%= link_to "新規登録", new_user_registration_path %>
-  <%= link_to "ログイン", new_user_session_path %>
-  <%= link_to "ログイン２", new_admin_session_path %>
-<% end %>
+<div class="top_image">
+  <div class="top_text text-center">
+    <h1 class="main_title">「<span class="text_black">animal_blog</span>」</h1>
+    <h4 class="pt-3">とっておきのシーンから悩みまで<br>
+    ペットに関わることを共有できるブログサイトです。<br>
+    家族とのかけがえのない思い出を分かち合いましょう。
+    </h4>
+    <%= link_to "今すく始める", new_user_registration_path, class: 'btn btn-primary'%>
+  </div>
+</div>

@@ -2,7 +2,8 @@
   <div>
     <%= post_comment.created_at.strftime('%Y/%m/%d') %>
     <h5>
-      <%= link_to user_path(post_comment.user) do %>
+      <%= link_to user_path(post_comment.user), class: 'text-reset' do %>
+        <i class="fas fa-user-circle"></i>
         <%= post_comment.user.name %>
       <% end %>
     </h5>
