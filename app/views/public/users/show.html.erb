@@ -10,7 +10,7 @@
         <h1>プロフィール</h1>
         <div class="notification pl-4">
             <% if unchecked_notifications.any? %>
-              <i class="fa fa-circle" style="color: gold;"></i>
+              <i class="fa fa-circle" style="color: red;"></i>
             <% end %>
             <%= link_to "通知を見る", notifications_path, class:'btn btn-light' %>
         </div>

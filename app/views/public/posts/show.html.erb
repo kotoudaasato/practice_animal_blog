@@ -9,17 +9,17 @@
           <%= render'public/favorites/favorite', post: @post %>
         </div>
         <div>
-        <% if current_user == @post.user %>
-          <%= link_to "編集する", edit_post_path(@post), class: "btn btn-success"%>
-        <% end %>
+          <% if current_user == @post.user %>
+            <%= link_to "編集する", edit_post_path(@post), class: "btn btn-success"%>
+          <% end %>
         </div>
       </div>
       <div class="user_name text-start mt-0">
-        <i class="fas fa-user-circle"></i>
-        <%= @post.user.name %>
+        <%= link_to user_path(@post.user), class:'text-reset' do%>
+          <i class="fas fa-user-circle"><%= @post.user.name %></i>
+        <% end %>
       </div>
       <div>
-
         <% @post_tags.each do |tag| %>
           <i class="fas fa-tag">
             <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
@@ -30,12 +30,12 @@
         <%= @post.body %>
       </div>
     </div>
-  <div class="col-3">
+    <div class="col-3">
       <div class="profile_image p-0">
         <%= attachment_image_tag @post, :image, fallback: 'no_image.png', size:'300x300' %>
       </div>
     </div>
-    </div>
+  </div>
   <div class="row">
     <div class="col-8">
       <div class="comments">
@@ -45,7 +45,6 @@
         <%= render'public/post_comments/form', post: @post, post_comment: @post_comment%>
       </div>
     </div>
-    <div class="col-4">
-    </div>
+    <div class="col-4"></div>
   </div>
 </div>
