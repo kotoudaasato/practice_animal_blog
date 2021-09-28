@@ -1,30 +1,30 @@
 <div class="texts-wrapper">
-<div class="container">
-  <% if @model == 'user' %>
-  <h3> "<%= @content %>"検索のユーザー一覧</h3>
-  <% if @records.exists? %>
-    <% @records.each do |user| %>
-      <div class="row">
-        <div class="col">
-          <div class="border-bottom border-3 pt-3 pb-3">
-            <%= link_to user_path(user) do %>
-              <%= attachment_image_tag user, :profile_image, :fill,100,100, fallback: "no_image.png", size: "50x50", class: "rounded-circle" %>
-            <% end %>
-            <%= link_to user.name, user_path(user) %>
+  <div class="container">
+    <% if @model == 'user' %>
+    <h3> "<%= @content %>"検索のユーザー一覧</h3>
+    <% if @records.exists? %>
+      <% @records.each do |user| %>
+        <div class="row">
+          <div class="col">
+            <div class="border-bottom border-3 pt-3 pb-3">
+              <%= link_to user_path(user) do %>
+                <%= attachment_image_tag user, :profile_image, :fill,100,100, fallback: "no_image.png", size: "50x50", class: "rounded-circle" %>
+              <% end %>
+              <%= link_to user.name, user_path(user) %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  <% else %>
-    <p>該当するユーザーはいません</p>
-  <% end %>
-  <% elsif @model == 'post' %>
-    <h3>"<%= @content %>"検索の投稿一覧</h3>
-    <% if @records.exists? %>
-      <%= render 'public/posts/index', posts: @records %>
+      <% end %>
     <% else %>
-      <p>該当する投稿はありません</p>
+      <p>該当するユーザーはいません</p>
     <% end %>
-  <% end %>
-</div>
+    <% elsif @model == 'post' %>
+      <h3>"<%= @content %>"検索の投稿一覧</h3>
+      <% if @records.exists? %>
+        <%= render 'public/posts/index', posts: @records %>
+      <% else %>
+        <p>該当する投稿はありません</p>
+      <% end %>
+    <% end %>
+  </div>
 </div>

@@ -11,7 +11,6 @@
         <%= @post.user.name %>
       </div>
       <div>
-
         <% @post_tags.each do |tag| %>
           <i class="fas fa-tag">
             <%= link_to tag.name, admin_search_tag_path(tag_id: tag.id)%>
@@ -22,19 +21,18 @@
         <%= @post.body %>
       </div>
     </div>
-  <div class="col-3">
+    <div class="col-3">
       <div class="profile_image p-0">
         <%= attachment_image_tag @post, :image, fallback: 'no_image.png', size:'300x300' %>
       </div>
     </div>
-    </div>
+  </div>
   <div class="row">
     <div class="col-8">
       <div class="comments">
         <%= render 'admin/post_comments/index', post: @post %>
       </div>
     </div>
-    <div class="col-4">
-    </div>
+    <div class="col-4"></div>
   </div>
 </div>

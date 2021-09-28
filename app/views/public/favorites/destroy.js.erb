@@ -1,2 +1,4 @@
+<!--いいね削除機能　public/posts/show-->
 $(".favorites_buttons_show").html("<%= j(render'public/favorites/favorite', post: @post) %>");
+<!--いいね削除機能　public/posts/index-->
 $("#favorites_buttons_<%= @post.id %>").html("<%= j(render'public/favorites/favorite', post: @post) %>");

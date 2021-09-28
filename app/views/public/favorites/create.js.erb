@@ -1,5 +1,4 @@
 <!--いいね機能非同期通信 public/posts/show-->
 $(".favorites_buttons_show").html("<%= j(render'public/favorites/favorite', post: @post) %>");
-<!--いいね機能非同期通信 public/posts/-->
+<!--いいね機能非同期通信 public/posts/index-->
 $("#favorites_buttons_<%= @post.id %>").html("<%= j(render'public/favorites/favorite', post: @post) %>");
-
